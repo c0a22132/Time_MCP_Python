@@ -31,9 +31,9 @@ def main():
     )
     parser.add_argument(
         "--standalone", 
-        action="store_true", 
-        help="Run standalone version for testing"
-    )    
+        action="store_true",        help="Run standalone version for testing"
+    )
+    
     args = parser.parse_args()
     
     if args.standalone:
@@ -41,12 +41,12 @@ def main():
         asyncio.run(standalone_main())
     elif args.http:
         try:
-            from .http_server import create_app
             import uvicorn
             
-            app = create_app()
+            # Use the app string for uvicorn to enable workers and reload
+            app_str = "time_mcp_server.http_server:app"
             print(f"Starting HTTP server on {args.host}:{args.port}")
-            uvicorn.run(app, host=args.host, port=args.port)
+            uvicorn.run(app_str, host=args.host, port=args.port, reload=False)
         except ImportError as e:
             print(f"HTTP server dependencies not available: {e}")
             print("Install with: pip install fastapi uvicorn")

@@ -2,7 +2,20 @@
 
 このドキュメントでは、Time MCP Server（Python版）をKoyeb、Heroku、その他のクラウドプラットフォームにデプロイする方法を説明します。
 
-## Koyeb デプロイメント
+## 🚀 Koyeb デプロイメント（推奨）
+
+### 重要なアップデート
+
+**2025年6月24日**: Koyebデプロイメントの問題を修正しました。以下の変更が適用されています：
+
+- ✅ **Procfile**: `python -m uvicorn time_mcp_server.http_server:app --host 0.0.0.0 --port $PORT`
+- ✅ **uvicorn**: ファクトリーパターンでの起動をサポート
+- ✅ **ポート**: 環境変数 `$PORT` を正しく使用
+- ✅ **ヘルスチェック**: `/health` エンドポイントでの監視
+
+### ワンクリックデプロイ
+
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/services/deploy?name=time-mcp-python&type=git&repository=github.com/yourusername/Time_MCP_Python&branch=main)
 
 ### 前提条件
 

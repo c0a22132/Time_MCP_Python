@@ -18,8 +18,7 @@
       "quantity": 1,
       "size": "free"
     }
-  },
-  "scripts": {
+  },  "scripts": {
     "postdeploy": "echo 'Python Time MCP Server deployed successfully'"
   },
   "env": {
@@ -31,5 +30,6 @@
       "description": "Environment",
       "value": "production"
     }
-  }
+  },
+  "addons": []
 }

@@ -232,6 +232,10 @@ def create_app() -> FastAPI:
     return server.app
 
 
+# For uvicorn factory pattern
+app = create_app()
+
+
 if __name__ == "__main__":
     import uvicorn
     

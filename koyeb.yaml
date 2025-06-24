@@ -3,14 +3,15 @@ description: "Python MCP server to provide current time for specified countries/
 type: web
 build:
   type: buildpack
+  buildpack: heroku/python
   build_command: "pip install -r requirements.txt"
-  run_command: "python -m time_mcp_server --http"
+  run_command: "python -m uvicorn time_mcp_server.http_server:app --host 0.0.0.0 --port $PORT"
 ports:
-  - port: 8080
+  - port: 8000
     protocol: http
 health_check:
   path: "/health"
+  port: 8000
 environment:
   PYTHON_VERSION: "3.11"
-  PORT: "8080"
   ENVIRONMENT: "production"
