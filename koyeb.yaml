@@ -5,13 +5,13 @@ build:
   type: buildpack
   buildpack: heroku/python
   build_command: "pip install -r requirements.txt"
-  run_command: "python -m uvicorn time_mcp_server.http_server:app --host 0.0.0.0 --port $PORT"
+  run_command: "python -m time_mcp_server.main --http --port $PORT"
 ports:
-  - port: 8000
+  - port: 8080
     protocol: http
 health_check:
   path: "/health"
-  port: 8000
+  port: 8080
 environment:
   PYTHON_VERSION: "3.11"
   ENVIRONMENT: "production"
