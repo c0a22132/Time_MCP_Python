@@ -1,0 +1,16 @@
+name: time-mcp-server-python
+description: "Python MCP server to provide current time for specified countries/timezones"
+type: web
+build:
+  type: buildpack
+  build_command: "pip install -r requirements.txt"
+  run_command: "python -m time_mcp_server --http"
+ports:
+  - port: 8080
+    protocol: http
+health_check:
+  path: "/health"
+environment:
+  PYTHON_VERSION: "3.11"
+  PORT: "8080"
+  ENVIRONMENT: "production"

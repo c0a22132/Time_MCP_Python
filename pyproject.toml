@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "time-mcp-server"
+version = "1.0.0"
+description = "MCP server to provide current time for specified countries/timezones"
+authors = [{ name = "Your Name", email = "your.email@example.com" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "mcp>=1.0.0",
+    "pytz>=2023.3",
+    "python-dateutil>=2.8.2",
+    "httpx>=0.25.0",
+    "uvicorn>=0.24.0",
+    "fastapi>=0.104.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.0.0",
+    "mypy>=1.0.0"
+]
+
+[project.scripts]
+time-mcp-server = "time_mcp_server.main:main"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

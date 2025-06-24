@@ -1,0 +1,35 @@
+{
+  "name": "time-mcp-server-python",
+  "description": "Python MCP server to provide current time for specified countries/timezones",
+  "website": "https://github.com/yourusername/Time_MCP_Python",
+  "repository": "https://github.com/yourusername/Time_MCP_Python",
+  "logo": "",
+  "success_url": "/health",
+  "keywords": ["mcp", "time", "timezone", "server", "python"],
+  "image": "heroku/python",
+  "stack": "heroku-22",
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "scripts": {
+    "postdeploy": "echo 'Python Time MCP Server deployed successfully'"
+  },
+  "env": {
+    "PYTHON_VERSION": {
+      "description": "Python version",
+      "value": "3.11"
+    },
+    "ENVIRONMENT": {
+      "description": "Environment",
+      "value": "production"
+    }
+  }
+}
